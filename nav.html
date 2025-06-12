@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Navbar مینیمال با مگا منیو</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+
+<nav class="navbar">
+  <!-- لوگو تصویری -->
+  <a href="#" class="logo">
+    <img src="images/logo.png" alt="لوگوی سایت" />
+  </a>
+
+  <!-- دکمه همبرگر موبایل -->
+  <button class="menu-toggle" aria-label="باز کردن منو">&#9776;</button>
+
+  <!-- منوی اصلی -->
+  <ul class="nav-menu">
+    <li><a href="#">خانه</a></li>
+    <li><a href="#">درباره ما</a></li>
+    <li class="has-mega">
+      <a href="#">خدمات</a>
+      <div class="mega-menu">
+        <div>
+          <h4>گروه اول</h4>
+          <ul>
+            <li><a href="#">خدمات ۱</a></li>
+            <li><a href="#">خدمات ۲</a></li>
+            <li><a href="#">خدمات ۳</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>گروه دوم</h4>
+          <ul>
+            <li><a href="#">خدمات ۴</a></li>
+            <li><a href="#">خدمات ۵</a></li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li><a href="#">تماس با ما</a></li>
+  </ul>
+</nav>
+
+<script>
+  // انتخاب دکمه منو و منو اصلی
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  // اضافه/حذف کلاس open هنگام کلیک روی دکمه
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

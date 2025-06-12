@@ -1,0 +1,172 @@
+body {
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    background-color: #e6e6e6;
+  }
+
+  
+
+* {
+    /* The universal selector (*) targets all elements on the page */
+    /* Why: Ensures these styles apply globally to reset browser defaults for consistency */
+    margin: 0;
+    /* Sets margin to 0 for all elements */
+    /* Why: Removes default margins added by browsers, preventing unwanted spacing */
+    padding: 0;
+    /* Sets padding to 0 for all elements */
+    /* Why: Removes default padding, ensuring no extra space inside elements */
+    box-sizing: border-box;
+    /* Sets box-sizing to border-box for all elements */
+    /* Why: Makes width and height include padding and borders, simplifying layout calculations */
+}
+
+
+
+  
+    /* نوار ناوبری اصلی */
+    .navbar {
+  display: flex;               /* Use flexbox to arrange child elements (like logo and menu) horizontally */
+  align-items: center;         /* Vertically center items within the navbar */
+  justify-content: space-between; /* Spread items out with space between them (logo left, menu right) */
+  padding: 1rem;               /* Add spacing inside navbar for breathing room */
+  background-color: #fafafa;   /* Set white background for clean look */
+  position: relative;          /* Allows absolute-positioned children relative to navbar */
+  font-family: inherit;/* Define font style for consistent typography */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Add subtle shadow for slight depth and separation from page */
+}
+
+/* Logo as an image */
+/* Set logo height for consistent size and keep aspect ratio with width auto */
+.logo img {
+  height: 40px;         /* Fix the logo height for uniform appearance */
+  width: auto;          /* Maintain the original aspect ratio */
+  display: block;       /* Remove extra space below the image (default inline behavior) */
+}
+
+/* Mobile menu button (hamburger) */
+/* Button to toggle mobile menu, shown only on small screens */
+.menu-toggle {
+  font-size: 1.5rem;   /* Large enough for easy clicking and visibility */
+  background: none;    /* Remove default button background */
+  border: none;        /* Remove default button border */
+  cursor: pointer;     /* Change cursor to pointer to indicate it’s clickable */
+  display: none;       /* Hide button by default (shown only in mobile view with media queries) */
+}
+
+/* Main menu (horizontal list) */
+/* Display navigation links side by side in a row */
+.nav-menu {
+    display: flex;        /* Use flexbox to arrange menu items horizontally */
+    list-style: none;     /* Remove default bullet points from list items */
+    gap: 2rem;            /* Add space between each menu item for clarity */
+    margin: 0;            /* Remove default margin around the list */
+    padding: 0;           /* Remove default padding inside the list */
+  }
+  
+/* Menu items and links */
+/* Style each menu link with spacing, color, and smooth hover effect */
+.nav-menu li a {
+    position: relative;          /* Enables positioning of pseudo-elements if needed (e.g., underline animations) */
+    text-decoration: none;       /* Remove default underline from links */
+    color: #333;                 /* Dark gray color for good readability */
+    font-weight: 500;            /* Medium font weight for a balanced emphasis */
+    transition: color 0.3s ease; /* Smooth transition when link color changes on hover */
+    padding: 0.25rem 0;          /* Vertical padding to increase clickable area */
+    display: inline-block;       /* Allows padding and positioning on the link */
+  }
+  
+
+/* Underline effect on link hover */
+/* Create a small line that animates under the link when hovered */
+.nav-menu li a::after {
+    content: "";                /* Generate an empty element for the underline */
+    position: absolute;         /* Position it relative to the link */
+    bottom: -4px;               /* Place it slightly below the link text */
+    left: 0;                   /* Start from the left edge */
+    height: 2px;               /* Set thickness of the underline */
+    width: 0%;                 /* Start with zero width (hidden) */
+    background-color: #0077ff; /* Blue color for the underline */
+    transition: width 0.3s ease; /* Smoothly animate width on hover */
+  }
+  
+  .nav-menu li a:hover {
+    color: #0077ff;            /* Change link text color on hover to match underline */
+  }
+  
+  .nav-menu li a:hover::after {
+    width: 100%;               /* Expand underline to full width on hover */
+  }
+  
+  /* Mega menu container */
+  /* Position relative to allow absolutely positioned submenu inside */
+  .has-mega {
+    position: relative;
+  }
+  
+
+  .mega-menu {
+    position: absolute;           /* Position submenu absolutely relative to parent */
+    top: 100%;                   /* Place it just below the parent menu item */
+    left: 0;                     /* Align submenu to the left edge */
+    display: none;               /* Hide submenu initially */
+    background: white;           /* White background for clean look */
+    padding: 3rem;               /* Inner spacing for content comfort */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Soft shadow to separate from background */
+    display: flex;               /* Arrange submenu items in a row */
+    gap: 4rem;                   /* Space between submenu items */
+    opacity: 0;                  /* Fully transparent initially */
+    visibility: hidden;          /* Prevent interaction and make invisible */
+    transform: translateY(10px); /* Slightly move submenu down for animation effect */
+    transition: all 0.3s ease;   /* Smooth animation for all changes */
+    min-width: 500px;            /* Ensure minimum width for readability */
+    z-index: 1000;               /* Place submenu above other content */
+  }
+  
+  .has-mega:hover .mega-menu {
+    display: flex;               /* Show submenu on hover */
+    opacity: 1;                  /* Fully opaque (visible) */
+    visibility: visible;         /* Make submenu interactable */
+    transform: translateY(0);    /* Move submenu to its original position */
+  }
+  .mega-menu ul {
+    list-style: none;
+  }
+  
+  
+   /* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+  
+    .menu-toggle {
+      display: block;            /* Show hamburger menu button on mobile */
+    }
+  
+    .nav-menu {
+      display: none;             /* Hide main menu by default on mobile */
+      flex-direction: column;   /* Stack menu items vertically */
+      background: white;         /* White background for clarity */
+      position: absolute;        /* Position menu below the navbar */
+      top: 100%;                 /* Place it right below the navbar */
+      left: 0;                   /* Align menu to the left edge */
+      width: 100%;               /* Make menu full width */
+      padding: 1rem;             /* Add padding for better spacing */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Add shadow for depth */
+      z-index: 1000;             /* Ensure menu appears above other content */
+    }
+  
+    .nav-menu.open {
+      display: flex;             /* Show menu when toggled open */
+    }
+  
+    /* Mobile menu items */
+    .nav-menu li {
+      margin-bottom: 1rem;       /* Add spacing between menu items */
+    }
+  
+    /* Disable mega menu hover effect on mobile */
+  /* Because hover is unreliable on touch devices, hide mega submenu */
+    .has-mega:hover .mega-menu {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
